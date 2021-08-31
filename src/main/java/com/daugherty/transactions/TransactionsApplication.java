@@ -15,14 +15,6 @@ public class TransactionsApplication {
 		}
 		System.out.println("There are currently " + repo.getAll().stream().filter(transaction -> transaction.getTransactionCategory().name().equals("NEEDS")).count() + " transactions labeled as NEEDS stored in total");
 
-		int sum = 0;
-		LocalDate now = LocalDate.now();
-		for(Transaction transaction : repo.getAll()){
-			if(transaction.getTransactionDate().getMonthValue() == now.getMonthValue()){
-				sum = sum + transaction.getAmount();
-			}
-		}
-		System.out.println("Total expenses for " + now.getMonth() + " is: "+sum);
 	}
 
 }
