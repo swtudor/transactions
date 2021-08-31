@@ -22,6 +22,7 @@ _HINTS:_
 ##Lab 3: 
 Create a new class in the service package called TransactionService. In that class, create a method that will receive a month and return the sum total of expenses for that month.
 Replace the logic in the main method by calling your newly created method on the TransactionService and printing the results.
+Print the results for this month, last month and two months ago, each on their own line.
 
 This should fulfill the user story: `As a user, I need to see a sum total of all transactions by month` by printing the solution to the command line.
 

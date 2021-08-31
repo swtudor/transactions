@@ -4,9 +4,11 @@ import com.daugherty.transactions.domain.Category;
 import com.daugherty.transactions.domain.Transaction;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class InMemoryTranactionRepository implements TransactionRepository{
     private static ArrayList<Transaction> transactionList = new ArrayList<>();
@@ -33,6 +35,12 @@ public class InMemoryTranactionRepository implements TransactionRepository{
 
         return getById(newId);
     }
+
+    @Override
+    public List<Transaction> getByMonth(Month month) {
+        return transactionList.stream().filter(transaction -> transaction.getTransactionDate().getMonth().equals(month)).collect(Collectors.toList());
+    }
+
 
     public static void resetData(){
         LocalDate now = LocalDate.now();
