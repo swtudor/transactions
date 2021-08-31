@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class InMemoryTranactionRepository implements TransactionRepository{
-    private static ArrayList<Transaction> transactionList = new ArrayList<>();
+public class InMemoryTransactionRepository implements TransactionRepository{
+    private static final ArrayList<Transaction> transactionList = new ArrayList<>();
 
     static{
         resetData();
@@ -44,8 +44,8 @@ public class InMemoryTranactionRepository implements TransactionRepository{
 
     public static void resetData(){
         LocalDate now = LocalDate.now();
-
         transactionList.clear();
+
         transactionList.add(new Transaction(1, now, "Housing", 850, Category.NEEDS));
         transactionList.add(new Transaction(2, now, "Auto", 350, Category.NEEDS));
         transactionList.add(new Transaction(3, now, "Food", 200, Category.NEEDS));

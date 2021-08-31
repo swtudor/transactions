@@ -1,18 +1,47 @@
 package com.daugherty.transactions.service;
 
+import com.daugherty.transactions.domain.Category;
 import com.daugherty.transactions.domain.Transaction;
-import com.daugherty.transactions.repository.InMemoryTranactionRepository;
+import com.daugherty.transactions.repository.InMemoryTransactionRepository;
 
 import java.time.Month;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TransactionService {
-    private InMemoryTranactionRepository repo = new InMemoryTranactionRepository();
+    private InMemoryTransactionRepository repo = new InMemoryTransactionRepository();
 
-    public int monthsSumOfTransactions(Month month){
+    public int sumOfTransactionsByMonth(Month month){
         int sum = 0;
         for(Transaction transaction : repo.getByMonth(month)){
             sum += transaction.getAmount();
         }
         return sum;
     }
+
+    public int sumOfTransactionsByMonth(Month month, Category category){
+        int sum = 0;
+        for(Transaction transaction : repo.getByMonth(month)){
+            if(transaction.getTransactionCategory().equals(category)){
+                sum += transaction.getAmount();
+            }
+        }
+        return sum;
+    }
+
+    public List<Transaction> listTransactionsByCategory(Category category){
+        return repo.getAll().stream().filter(transaction -> transaction.getTransactionCategory().equals(category)).collect(Collectors.toList());
+    }
+
+    public int monthlyPercentageOfIncomeByCategory(Month month,Category category, int income){
+        int categorySum = sumOfTransactionsByMonth(month, category);
+        return categorySum * 100 / income;
+    }
+
+    public int monthlyPercentageOfIncome(Month month, int income){
+        int monthSum = sumOfTransactionsByMonth(month);
+        return monthSum * 100 / income;
+    }
+
+
 }
