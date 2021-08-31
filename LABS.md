@@ -37,5 +37,8 @@ As a group, brainstorm some additional functionality for this application. Some 
 Write a new method for at least one of these user stories. If you get more done, that's amazing! Excellent work!
 
 ## Lab 5: Springify
-- In the main method of the `TransactionsApplication.java` class, add the `@SpringBootApplication` annotation above the main method.
-- Insert `SpringApplication.run(TransactionsApplication.class, args);` into the main method. Run the test `TransactionsApplicationTests.java`. What happens?
+- In the main method of the `TransactionsApplication.java` class:
+    - add the `@SpringBootApplication` annotation *above* the main method.
+    - Remove all the other code you've got in the main method
+    - Insert `SpringApplication.run(TransactionsApplication.class, args);` *into* the main method.
+- Run the test `TransactionsApplicationTests.java`. What happens?
