@@ -3,13 +3,28 @@ package com.daugherty.transactions.service;
 import com.daugherty.transactions.domain.Category;
 import com.daugherty.transactions.domain.Transaction;
 import com.daugherty.transactions.repository.InMemoryTransactionRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class TransactionService {
     private InMemoryTransactionRepository repo = new InMemoryTransactionRepository();
+
+    public List<Transaction> getAll(){
+        return repo.getAll();
+    }
+
+    public Optional<Transaction> getById(int id){
+        return repo.getById(id);
+    }
+
+    public Optional<Transaction> create(Transaction transaction){
+        return repo.create(transaction);
+    }
 
     public int sumOfTransactionsByMonth(Month month){
         int sum = 0;

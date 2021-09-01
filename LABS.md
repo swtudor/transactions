@@ -37,8 +37,31 @@ As a group, brainstorm some additional functionality for this application. Some 
 Write a new method for at least one of these user stories. If you get more done, that's amazing! Excellent work!
 
 ## Lab 5: Springify
-- In the main method of the `TransactionsApplication.java` class:
+- In the main method of the `TransactionsApplication` class:
     - add the `@SpringBootApplication` annotation *above* the main method.
-    - Remove all the other code you've got in the main method
     - Insert `SpringApplication.run(TransactionsApplication.class, args);` *into* the main method.
-- Run the test `TransactionsApplicationTests.java`. What happens?
+    - Run the application. What happens?
+    - Remove all the other code you've got in the main method & run again. What changes?
+- Run the test `TransactionsApplicationTests`. What happens? Why did this work? Do we see other SpringBoot Annotations in the codebase?
+
+## Lab 6: REST - Get All Transactions
+In order to convert to a RESTful service (and to leverage Spring Boot for that), we will need to first add even more annotations.
+Adding the annotations to the main method made this a Spring Application and configured it but we're not really using Spring Boot to do anything.
+- add the `@Service` annotation to the `InMemoryTransactionRepository` class. **NOTE:** Why is this not marked with an `@Repository` annotation?
+- add the `@Service` annotation to the `TransactionService` class. 
+- In the `api` package, create a new class called `TransactionController`.
+ 
+In order to create a REST controller, you will need to do a few things.
+  - add the `@RestController` annotation above the class header.
+  - Inside the `TransactionController` class, create a private `TransactionService` object
+  - create a constructor and pass in a `TransactionService` object 
+  - Add the annotation `@Autowired` above the constructor
+
+Now create a single endpoint that returns all the Transactions as a List. 
+  - write the method that returns `List<Transaction>` and uses the transactionService to return all the transactions.
+  - Add the `@GetMapping("transactions")` annotation above the method signature.
+  - Something is missing in these directions... can you figure out why this won't work?
+
+When you have successfully created the method, launch the spring application and put the url `http://localhost:8080/transactions` into your browser.
+What happens? (If you have Postman installed, launch it and create a new request for the same url)
+
