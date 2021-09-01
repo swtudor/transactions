@@ -55,7 +55,7 @@ In order to create a REST controller, you will need to do a few things.
   - add the `@RestController` annotation above the class header.
   - Inside the `TransactionController` class, create a private `TransactionService` object
   - create a constructor and pass in a `TransactionService` object 
-  - Add the annotation `@Autowired` above the constructor
+  - Add the annotation `@Autowired` above the constructor. WHat is this annotation doing? Why is it structured like that? 
 
 Now create a single endpoint that returns all the Transactions as a List. 
   - write the method that returns `List<Transaction>` and uses the transactionService to return all the transactions.
@@ -65,3 +65,13 @@ Now create a single endpoint that returns all the Transactions as a List.
 When you have successfully created the method, launch the spring application and put the url `http://localhost:8080/transactions` into your browser.
 What happens? (If you have Postman installed, launch it and create a new request for the same url)
 
+
+##Lab 7: Add More endpoints
+Create at least two more endpoints from the list below
+- POST: `http://localhost:8080/transactions` - will create a new Transaction and add it to the list (*HINT*: you will need a @RequestBody annotation. Additionally, you may need to return a ResponseEntity object so that you can respond to a bad request body)
+- GET: `http://localhost:8080/transactions/category?category=savings` - will filter the transaction list by category (*HINT:* you will need to use the `@RequestParam` annotation to pass in the category. You will also need to think through the conversion of a String to an enum) 
+- GET: `http://localhost:8080/transactions/month/august` - will find all transactions for a given month. Note that this uses a `@PathVariable` variable instead of the `@RequestParam` from above
+
+Think through what it would look like to add endpoints to serve up the data you already wrote the logic for in the TransactionService class.
+- GET: `http://localhost:8080/transactions/sum/august?category=needs` - will return the sum of all transactions from august with an optional filter for category. 
+- GET: `http://localhost:8080/transactions/percentage/august?category=needs&income=3000` - will return the percentage of income used for a month with an optional filter for category

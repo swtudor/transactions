@@ -32,7 +32,7 @@ public class InMemoryTransactionRepository implements TransactionRepository{
     @Override
     public Optional<Transaction> create(Transaction transaction) {
         var newId = transactionList.size() + 1;
-        var newTransaction = new Transaction(newId, LocalDate.now(), transaction.getName(), transaction.getAmount(), transaction.getTransactionCategory());
+        var newTransaction = new Transaction(newId, LocalDate.now(), transaction.getName(), transaction.getAmount(), transaction.getCategory());
         transactionList.add(newTransaction);
 
         return getById(newId);
@@ -40,7 +40,7 @@ public class InMemoryTransactionRepository implements TransactionRepository{
 
     @Override
     public List<Transaction> getByMonth(Month month) {
-        return transactionList.stream().filter(transaction -> transaction.getTransactionDate().getMonth().equals(month)).collect(Collectors.toList());
+        return transactionList.stream().filter(transaction -> transaction.getDate().getMonth().equals(month)).collect(Collectors.toList());
     }
 
 

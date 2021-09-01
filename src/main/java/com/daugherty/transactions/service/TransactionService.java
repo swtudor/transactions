@@ -26,6 +26,10 @@ public class TransactionService {
         return repo.create(transaction);
     }
 
+    public List<Transaction> getByMonth(Month month) {
+        return repo.getByMonth(month);
+    }
+
     public int sumOfTransactionsByMonth(Month month){
         int sum = 0;
         for(Transaction transaction : repo.getByMonth(month)){
@@ -37,7 +41,7 @@ public class TransactionService {
     public int sumOfTransactionsByMonth(Month month, Category category){
         int sum = 0;
         for(Transaction transaction : repo.getByMonth(month)){
-            if(transaction.getTransactionCategory().equals(category)){
+            if(transaction.getCategory().equals(category)){
                 sum += transaction.getAmount();
             }
         }
@@ -45,10 +49,10 @@ public class TransactionService {
     }
 
     public List<Transaction> listTransactionsByCategory(Category category){
-        return repo.getAll().stream().filter(transaction -> transaction.getTransactionCategory().equals(category)).collect(Collectors.toList());
+        return repo.getAll().stream().filter(transaction -> transaction.getCategory().equals(category)).collect(Collectors.toList());
     }
 
-    public int monthlyPercentageOfIncomeByCategory(Month month,Category category, int income){
+    public int monthlyPercentageOfIncome(Month month, Category category, int income){
         int categorySum = sumOfTransactionsByMonth(month, category);
         return categorySum * 100 / income;
     }
