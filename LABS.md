@@ -75,3 +75,27 @@ Create at least two more endpoints from the list below
 Think through what it would look like to add endpoints to serve up the data you already wrote the logic for in the TransactionService class.
 - GET: `http://localhost:8080/transactions/sum/august?category=needs` - will return the sum of all transactions from august with an optional filter for category.
 - GET: `http://localhost:8080/transactions/percentage/august?category=needs&income=3000` - will return the percentage of income used for a month with an optional filter for category
+
+##Lab 8: Testing the service class
+- add junit to your pom.xml:
+```xml
+ <dependency>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-engine</artifactId>
+  <scope>test</scope>
+</dependency>
+```
+- create two new packages in com.daugherty.transactions package (in the test directory):
+  - api
+  - service
+- next create three new classes in those packages:
+  - api package -> TransactionControllerTest
+  - service package -> TransactionServiceTest
+  **NOTE:** the package names are the same as in the src.main.java directory above but that the class names all have Test added to the end. This is a convention, nothing more.
+
+- We will begin by writing the first unit tests for the TransactionService class. Open your newly created TransactionServiceTest.
+  - add @SpringBootTest and @TestInstance(TestInstance.Lifecycle.PER_CLASS) annotations above the class header
+  - look at the TransactionService class and discover what you will need to mock in the unit test.
+  - add an instance of the object to the test class. Don't forget to add the @Mock above the object.
+  - You will also need to instantiate an object of the TransactionService class. Above that, add the @InjectMocks annotation.
+  - create a unit test that will assertNotNull() when you call the transactionService.getAll() method.
