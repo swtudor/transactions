@@ -77,7 +77,7 @@ At minimum, write up the pseudocode for the following endpoints. Write them if y
 
 What are some other ways you can add functionality to this application? 
 
-## Lab 8: Unit tests with JUnit 
+## Lab 8: Testing the service class 
 - add junit to your pom.xml:
 ```xml
 <dependency>
@@ -95,6 +95,10 @@ What are some other ways you can add functionality to this application?
   **NOTE:** the package names are the same as in the src.main.java directory above but that the class names all have Test added to the end. This is a convention, nothing more.
 
 We will begin by writing the first unit tests for the `TransactionService` class. Open your newly created `TransactionServiceTest`. 
-- add 
+- add `@SpringBootTest` and `@TestInstance(TestInstance.Lifecycle.PER_CLASS)` annotations above the class header
+- look at the `TransactionService` class and discover what you will need to mock in the unit test.
+- add an instance of the object to the test class. Don't forget to add the `@Mock` above the object.
+- You will also need to instantiate an object of the `TransactionService` class. Above that, add the `@InjectMocks` annotation.
+- create a unit test that will `assertNotNull()` when you call the transactionService.getAll() method.
 
 ## Lab 9: Unit testing the API with Mockito

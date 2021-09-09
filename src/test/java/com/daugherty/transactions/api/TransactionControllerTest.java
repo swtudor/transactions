@@ -91,26 +91,5 @@ public class TransactionControllerTest {
         assertNotNull(result);
     }
 
-    /*@Test
-    public void getAll() throws Exception{
-        // mocks the request and captures the result
-       MvcResult result = mockMvc.perform(get(baseUrl))
-               .andExpect(status().isOk())
-               .andReturn();
-       StringBuilder expected = new StringBuilder();
-       ObjectMapper mapper = new ObjectMapper();
-       transactionList.stream().forEach(transaction -> {
-           try {
-               expected.append(mapper.writeValueAsString(transaction));
-           } catch (JsonProcessingException e) {
-               e.printStackTrace();
-           }
-       });
-
-       assertEquals(expected.toString(), result.getResponse().getContentAsString());
-
-    }*/
-
-
 
 }
