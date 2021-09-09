@@ -2,6 +2,7 @@ package com.daugherty.transactions.repository;
 
 import com.daugherty.transactions.domain.Category;
 import com.daugherty.transactions.domain.Transaction;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service
+@Repository
 public class InMemoryTransactionRepository implements TransactionRepository{
     private static final ArrayList<Transaction> transactionList = new ArrayList<>();
 

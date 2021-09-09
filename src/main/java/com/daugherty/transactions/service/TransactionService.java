@@ -3,6 +3,7 @@ package com.daugherty.transactions.service;
 import com.daugherty.transactions.domain.Category;
 import com.daugherty.transactions.domain.Transaction;
 import com.daugherty.transactions.repository.InMemoryTransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Month;
@@ -12,7 +13,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class TransactionService {
-    private InMemoryTransactionRepository repo = new InMemoryTransactionRepository();
+    private InMemoryTransactionRepository repo;
+
+    @Autowired
+    public TransactionService(InMemoryTransactionRepository repo){
+        this.repo = repo;
+    }
 
     public List<Transaction> getAll(){
         return repo.getAll();

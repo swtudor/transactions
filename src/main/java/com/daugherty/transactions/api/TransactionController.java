@@ -21,6 +21,11 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    @GetMapping("/test")
+    String testEndpoint(){
+        return "Test Success!";
+    }
+
     @GetMapping
     List<Transaction> getAll(){return transactionService.getAll();}
 
