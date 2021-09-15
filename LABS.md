@@ -66,7 +66,7 @@ When you have successfully created the method, launch the spring application and
 What happens? (If you have Postman installed, launch it and create a new request for the same url)
 
 
-##Lab 7: Add More endpoints
+## Lab 7: Add More endpoints
 Create at least two more endpoints from the list below
 - POST: `http://localhost:8080/transactions` - will create a new Transaction and add it to the list (*HINT*: you will need a @RequestBody annotation. Additionally, you may need to return a ResponseEntity object so that you can respond to a bad request body)
 - GET: `http://localhost:8080/transactions/category?category=savings` - will filter the transaction list by category (*HINT:* you will need to use the `@RequestParam` annotation to pass in the category. You will also need to think through the conversion of a String to an enum)
@@ -76,7 +76,7 @@ Think through what it would look like to add endpoints to serve up the data you 
 - GET: `http://localhost:8080/transactions/sum/august?category=needs` - will return the sum of all transactions from august with an optional filter for category.
 - GET: `http://localhost:8080/transactions/percentage/august?category=needs&income=3000` - will return the percentage of income used for a month with an optional filter for category
 
-##Lab 8: Testing the service class
+## Lab 8: Testing the service class
 - add junit to your pom.xml:
 ```xml
  <dependency>
